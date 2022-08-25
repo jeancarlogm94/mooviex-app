@@ -10,11 +10,9 @@ import tmdbApi, { category, movieType } from '../../api/tmdbApi';
 import apiConfig from '../../api/apiConfig';
 import './hero-slide.scss';
 import { useNavigate } from 'react-router';
-import Spinner from '../spinner/Spinner';
 
 const HeroSlide = () => {
   SwiperCore.use([Autoplay]);
-  const [loading, setLoading] = useState(true);
   const [movieItems, setMovieItems] = useState([]);
 
   useEffect(() => {
@@ -31,11 +29,8 @@ const HeroSlide = () => {
       }
     };
     getMovies();
-    setLoading(false);
-  }, [loading]);
-  if (loading) {
-    return <Spinner />;
-  }
+  }, []);
+
   return (
     <div className="hero-slide">
       <Swiper

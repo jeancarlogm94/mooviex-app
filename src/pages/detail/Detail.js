@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 
-import tmdbApi from "../../api/tmdbApi";
-import apiConfig from "../../api/apiConfig";
+import tmdbApi from '../../api/tmdbApi';
+import apiConfig from '../../api/apiConfig';
 
-import "./detail.scss";
-import CastList from "./CastList";
-import VideoList from "./VideoList";
+import './detail.scss';
+import CastList from './CastList';
+import VideoList from './VideoList';
 
-import MovieList from "../../components/movie-list/MovieList";
-import Spinner from "../../components/spinner/Spinner";
+import MovieList from '../../components/movie-list/MovieList';
 
 const Detail = () => {
   const { category, id } = useParams();
-  const [loading, setLoading] = useState(true);
   const [item, setItem] = useState(null);
 
   useEffect(() => {
@@ -23,11 +21,8 @@ const Detail = () => {
       window.scrollTo(0, 0);
     };
     getDetail();
-    setLoading(false);
   }, [category, id]);
-  if (loading) {
-    return <Spinner />;
-  }
+
   return (
     <>
       {item && (
